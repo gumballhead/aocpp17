@@ -1,0 +1,8 @@
+bin
+Makefile
+CMakeFiles
+CMakeCache.txt
+Testing
+*.cmake
+.vscode
+

@@ -14,3 +14,9 @@ For example:
 - `91212129` produces `9` because the only digit that matches the next one is the last digit, `9`.
 
 *What is the solution* to your captcha?
+
+```bash
+bin/part1 < input
+```
+
+Your puzzle answer was `1069`.

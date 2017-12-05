@@ -34,3 +34,9 @@ For example:
 - `12131415` produces `4`.
 
 *What is the solution* to your new captcha?
+
+```bash
+bin/part2 < input
+```
+
+Your puzzle answer was `1268`.

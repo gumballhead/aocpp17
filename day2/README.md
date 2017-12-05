@@ -48,3 +48,9 @@ For example, given the following spreadsheet:
 - In this example, the sum of the results would be `4 + 3 + 2 = 9`.
 
 What is the *sum of each row's result* in your puzzle input?
+
+```bash
+bin/part2 < input
+```
+
+Your puzzle answer was `320`.

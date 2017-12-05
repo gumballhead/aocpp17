@@ -14,7 +14,7 @@ namespace view = ranges::view;
 int main() {
   auto sums = ranges::getlines(cin) | view::transform([] (const string& line) {
     istringstream row { line };
-    auto [min, max] = ranges::minmax(ranges::istream<int>(row));
+    const auto [min, max] = ranges::minmax(ranges::istream<int>(row));
 
     return max - min;
   });

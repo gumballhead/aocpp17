@@ -12,8 +12,6 @@
 #include "range/v3/view/cartesian_product.hpp"
 #include "range/v3/view/transform.hpp"
 
-#include <typeinfo>
-
 using namespace std;
 namespace view = ranges::view;
 
@@ -23,19 +21,18 @@ int main() {
     return ranges::istream<int>(row) | ranges::to_vector;
   });
 
-  auto sums = view::transform(rows, [] (const vector<int> &row) {
-    const auto found = ranges::find_if(view::cartesian_product(row, row),
+  auto checks = view::transform(rows, [](const vector<int>& row) {
+    const auto values = ranges::find_if(view::cartesian_product(row, row),
       [] (const tuple<int, int>& pair) {
         const auto [first, second] = pair;
-        const bool found = first > second && first % second == 0;
-        return found;
+        return first > second && first % second == 0;
       });
 
-    const auto [first, second] = *found.get_unsafe();
+    const auto [first, second] = *values.get_unsafe();
     return first / second;
   });
 
-  cout << ranges::accumulate(sums, 0) << endl;
+  cout << ranges::accumulate(checks, 0) << endl;
 
   return EXIT_SUCCESS;
 }

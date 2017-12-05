@@ -14,7 +14,7 @@ namespace view = ranges::view;
 int main() {
   auto lines = ranges::getlines(cin);
 
-  auto valid = ranges::count_if(lines, [] (const string &line) {
+  auto valid = ranges::count_if(lines, [] (const string& line) {
     unordered_set<string> phrase;
     istringstream row { line };
     auto words = ranges::istream<string>(row);

@@ -11,8 +11,7 @@ namespace view = ranges::view;
 
 int main() {
   string input;
-  getline(std::cin, input);
-
+  getline(cin, input);
   const size_t size = input.size() / 2;
 
   auto numbers = view::zip_with([] (const char& first, const char& second) {

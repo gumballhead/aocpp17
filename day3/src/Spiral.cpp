@@ -4,35 +4,35 @@
 
 using namespace std;
 
-Spiral::Spiral(): Spiral(Coordinates { 0, 0 }) {}
-Spiral::Spiral(const Coordinates& start): coordinates(start), offset(start) {}
+Spiral::Spiral(): Spiral(Point { 0, 0 }) {}
+Spiral::Spiral(const Point& start): position(start), offset(start) {}
 
-void Spiral::move() {
-  switch (bearing) {
-    case EAST: {
-      coordinates.x++;
+void Spiral::next() {
+  switch (direction) {
+    case RIGHT: {
+      position.x++;
       break;
     }
 
-    case NORTH: {
-      coordinates.y++;
+    case UP: {
+      position.y++;
       break;
     }
 
-    case WEST: {
-      coordinates.x--;
+    case LEFT: {
+      position.x--;
       break;
     }
 
-    case SOUTH: {
-      coordinates.y--;
+    case DOWN: {
+      position.y--;
       break;
     }
   }
 }
 
-Coordinates Spiral::operator() () {
-  const Coordinates result = coordinates;
+Point Spiral::operator() () {
+  const Point result = position;
 
   if (i == pow(2 * size + 1, 2)) {
     size++;
@@ -40,14 +40,14 @@ Coordinates Spiral::operator() () {
 
   const auto [x, y] = offset;
 
-  if (bearing == EAST && coordinates.x == x + size ||
-    bearing == NORTH && coordinates.y == y + size ||
-    bearing == WEST && coordinates.x == x - size ||
-    bearing == SOUTH && coordinates.y == y - size) {
-    bearing--;
+  if (direction == RIGHT && position.x == x + size ||
+    direction == UP && position.y == y + size ||
+    direction == LEFT && position.x == x - size ||
+    direction == DOWN && position.y == y - size) {
+    direction--;
   }
 
-  move();
+  next();
   i++;
 
   return result;

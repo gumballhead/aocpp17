@@ -12,8 +12,8 @@ int main(int argc, char** argv) {
   const int n = atoi(argv[1]);
   auto spiral = view::generate(Spiral()) | view::drop(n - 1);
 
-  const Coordinates coordinates = *spiral.begin();
-  cout << getDistance(coordinates) << endl;
+  const Point position = *spiral.begin();
+  cout << getDistance(position) << endl;
 
   return EXIT_SUCCESS;
 }

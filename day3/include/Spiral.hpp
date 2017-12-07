@@ -1,22 +1,22 @@
 #ifndef SPIRAL_HPP
 #define SPIRAL_HPP
 
-#include "Bearing.hpp"
-#include "Coordinates.hpp"
+#include "Direction.hpp"
+#include "Point.hpp"
 
 class Spiral {
   private:
-    Bearing bearing = EAST;
-    Coordinates coordinates;
-    const Coordinates offset;
+    Direction direction = RIGHT;
+    Point position;
+    const Point offset;
     unsigned int i = 1;
     unsigned int size = 0;
-    void move();
+    void next();
 
   public:
     Spiral();
-    Spiral(const Coordinates& start);
-    Coordinates operator() ();
+    Spiral(const Point& start);
+    Point operator() ();
 };
 
 #endif

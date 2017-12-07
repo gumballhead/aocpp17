@@ -10,9 +10,9 @@ namespace view = ranges::view;
 
 int main(int argc, char** argv) {
   const int n = atoi(argv[1]);
-  auto spiral = view::generate(Spiral()) | view::drop(n);
-  const Coordinates coordinates = *spiral.begin();
+  auto spiral = view::generate(Spiral()) | view::drop(n - 1);
 
+  const Coordinates coordinates = *spiral.begin();
   cout << getDistance(coordinates) << endl;
 
   return EXIT_SUCCESS;

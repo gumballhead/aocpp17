@@ -12,8 +12,8 @@ set_tests_properties(day3part1test PROPERTIES PASS_REGULAR_EXPRESSION "480")
 
 # Part 2
 
-#add_executable(day3part2 ${PROJECT_SOURCE_DIR}/src/part2.cpp)
-#set_target_properties(day3part2 PROPERTIES OUTPUT_NAME "part2")
+add_executable(day3part2 ${PROJECT_SOURCE_DIR}/src/part2.cpp)
+set_target_properties(day3part2 PROPERTIES OUTPUT_NAME "part2")
 
-#add_test(NAME day3part2test COMMAND sh -c "$<TARGET_FILE:day3part2> < input")
-#set_tests_properties(day3part2test PROPERTIES PASS_REGULAR_EXPRESSION "25608480")
+add_test(NAME day3part2test COMMAND day3part2 347991)
+set_tests_properties(day3part2test PROPERTIES PASS_REGULAR_EXPRESSION "349975")

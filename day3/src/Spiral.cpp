@@ -29,6 +29,8 @@ void Spiral::move() {
 }
 
 Coordinates Spiral::operator() () {
+  const Coordinates result = coordinates;
+
   if (i == pow(2 * size + 1, 2)) {
     size++;
   }
@@ -43,5 +45,5 @@ Coordinates Spiral::operator() () {
   move();
   i++;
 
-  return coordinates;
+  return result;
 }

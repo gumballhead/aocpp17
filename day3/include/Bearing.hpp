@@ -1,3 +1,6 @@
+#ifndef BEARING_HPP
+#define BEARING_HPP
+
 enum Bearing { NORTH, EAST, SOUTH, WEST };
 
 inline Bearing& operator ++ (Bearing& bearing) {
@@ -27,3 +30,5 @@ inline Bearing operator -- (Bearing& bearing, int ignored) {
 
   return result;
 }
+
+#endif

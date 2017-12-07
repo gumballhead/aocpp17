@@ -21,7 +21,7 @@ int main() {
     return ranges::istream<int>(row) | ranges::to_vector;
   });
 
-  auto checks = view::transform(rows, [](const vector<int>& row) {
+  auto values = view::transform(rows, [] (const vector<int>& row) {
     const auto values = ranges::find_if(view::cartesian_product(row, row),
       [] (const tuple<int, int>& pair) {
         const auto [first, second] = pair;
@@ -32,7 +32,7 @@ int main() {
     return first / second;
   });
 
-  cout << ranges::accumulate(checks, 0) << endl;
+  cout << ranges::accumulate(values, 0) << endl;
 
   return EXIT_SUCCESS;
 }

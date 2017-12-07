@@ -5,7 +5,10 @@
 using namespace std;
 
 int main() {
-  vector<int> jumps { istream_iterator<int>(cin), istream_iterator<int>() };
+  vector<int> jumps {
+    istream_iterator<int>(cin),
+    istream_iterator<int>()
+  };
 
   const int size = jumps.size();
   int i = 0;

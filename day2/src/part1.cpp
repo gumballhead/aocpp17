@@ -12,14 +12,14 @@ using namespace std;
 namespace view = ranges::view;
 
 int main() {
-  auto checks = ranges::getlines(cin) | view::transform([] (const string& line) {
+  auto values = ranges::getlines(cin) | view::transform([] (const string& line) {
     istringstream row { line };
-    const auto[min, max] = ranges::minmax(ranges::istream<int>(row));
+    const auto [min, max] = ranges::minmax(ranges::istream<int>(row));
 
     return max - min;
   });
 
-  cout << ranges::accumulate(checks, 0) << endl;
+  cout << ranges::accumulate(values, 0) << endl;
 
   return EXIT_SUCCESS;
 }

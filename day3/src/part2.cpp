@@ -4,10 +4,9 @@
 
 #include "range/v3/algorithm/find_if.hpp"
 #include "range/v3/numeric/accumulate.hpp"
-#include "range/v3/view/for_each.hpp"
 #include "range/v3/view/generate.hpp"
-#include "range/v3/view/iota.hpp"
 #include "range/v3/view/remove_if.hpp"
+#include "range/v3/view/slice.hpp"
 #include "range/v3/view/transform.hpp"
 
 #include "Spiral.cpp"
@@ -15,27 +14,19 @@
 using namespace std;
 namespace view = ranges::view;
 
-auto neighbors(const Coordinates& coordinates) {
-  return view::for_each(view::iota(-1, 2), [&coordinates] (const int x) {
-    return view::for_each(view::iota(-1, 2), [&coordinates, x] (const int y) {
-      return ranges::yield_if(!(x == 0 && y == 0), Coordinates {
-        coordinates.x + x,
-        coordinates.y + y
-      });
-    });
-  });
-}
-
 int main(int argc, char** argv) {
   const int input = atoi(argv[1]);
+  Spiral spiral;
 
   unordered_map<Coordinates, int, CoordinatesHash> values {
-    { Coordinates { 0, 0 }, 1 }
+    {  spiral(), 1 }
   };
 
-  auto coordinates = ranges::find_if(view::generate(Spiral()),
+  auto coordinates = ranges::find_if(view::generate(spiral),
     [&input, &values] (const Coordinates& coordinates) {
-      auto neighborsValues = neighbors(coordinates)
+      auto neighborsValues = view::generate(Spiral(coordinates))
+        | view::slice(1, 9)
+
         | view::remove_if([&values] (const Coordinates& neighbor) {
             return values.find(neighbor) == values.end();
           })

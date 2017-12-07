@@ -4,6 +4,9 @@
 
 using namespace std;
 
+Spiral::Spiral(): Spiral(Coordinates { 0, 0 }) {}
+Spiral::Spiral(const Coordinates& start): coordinates(start), offset(start) {}
+
 void Spiral::move() {
   switch (bearing) {
     case EAST: {
@@ -35,10 +38,12 @@ Coordinates Spiral::operator() () {
     size++;
   }
 
-  if (bearing == EAST && coordinates.x == size ||
-    bearing == NORTH && coordinates.y == size ||
-    bearing == WEST && -coordinates.x == size ||
-    bearing == SOUTH && -coordinates.y == size) {
+  const auto [x, y] = offset;
+
+  if (bearing == EAST && coordinates.x == x + size ||
+    bearing == NORTH && coordinates.y == y + size ||
+    bearing == WEST && coordinates.x == x - size ||
+    bearing == SOUTH && coordinates.y == y - size) {
     bearing--;
   }
 

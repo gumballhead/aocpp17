@@ -7,12 +7,15 @@
 class Spiral {
   private:
     Bearing bearing = EAST;
-    Coordinates coordinates = {0, 0};
+    Coordinates coordinates;
+    const Coordinates offset;
     unsigned int i = 1;
     unsigned int size = 0;
     void move();
 
   public:
+    Spiral();
+    Spiral(const Coordinates& start);
     Coordinates operator() ();
 };
 

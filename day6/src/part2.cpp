@@ -24,6 +24,7 @@ int main() {
   };
 
   const int size = banks.size();
+  bool seen = false;
 
   while (true) {
     const auto max = max_element(banks.begin(), banks.end());
@@ -39,6 +40,10 @@ int main() {
     const int state = hashInts(banks);
 
     if (find(states.begin(), states.end(), state) == states.end()) {
+      states.push_back(state);
+    } else if (!seen) {
+      seen = true;
+      states.clear();
       states.push_back(state);
     } else {
       break;
